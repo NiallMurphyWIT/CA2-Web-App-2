@@ -19,12 +19,12 @@ if (process.env.seedDb) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-app.use(express.static('public'));
+app.use(express.static('./tftNews/public'));
 
 
 app.use('/api/posts', postsRouter);
 
-app.use(express.static('public'));
+app.use(express.static('./tftNews/public'));
 
 app.listen(port, () => {
   console.info(`Server running at ${port}`);
