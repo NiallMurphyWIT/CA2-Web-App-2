@@ -50,9 +50,14 @@ Screenshot included of expanded Storybook.
 
 ## Independent learning attempt
 
-I researched how to add a login/signup page so that I coould have users for the app but I was unfortunately unable to get this to work.
+I researched how to add a login/signup page so that I could have users for the app but I was unfortunately unable to get this to work.
+
+## Note
+
+I was able to hookup the front and back end so that the posts from the api re used but I was not able to get the delete and edit functions to work after doing this.
 
 [model]: ./img/model.PNG
 [main]: ./img/main.PNG
 [detail]: ./img/detail.PNG
 [stories]: ./img/stories.PNG
+
