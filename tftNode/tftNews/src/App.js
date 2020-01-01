@@ -43,13 +43,11 @@ export default class App extends Component {
     }
 
     removePost = (id) => {
-      /*
-      api.remove(id)
-      .then(resp=> {
-                  var removePos = _.remove(this.posts, post => post.id === id);
+      api.remove(id).then(resp=> {
+                  _.remove(this.posts, post => post.id === id);
                   this.setState({})
       });
-      */
+      
     }
 
 

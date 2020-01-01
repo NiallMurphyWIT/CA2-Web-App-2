@@ -84,6 +84,17 @@ import _ from 'lodash';
                 }
               return false;
            },
+         downvote: (id) => {
+             const index = _.findIndex(posts,
+                   (post) => {
+                    return post.id == id;
+                  } );
+             if (index !== -1) {
+                  posts[index].upvotes -= 1;
+                  return true;
+                }
+              return false;
+           },
          getPost: (id) => {
             let result = null;
             const index = _.findIndex(posts,
@@ -124,5 +135,29 @@ import _ from 'lodash';
               }
             return result;
           },
+          downvoteComment: (postId, commentId) => {
+            let result = false;
+            const post = stubAPI.getPost(postId);
+            if (post) {
+            const index = _.findIndex(post.comments, (c) => {
+                      return c.id == commentId;
+                    });
+             if (index !== -1) {
+                 post.comments[index].upvotes -= 1;
+                 result = true;
+                }
+              }
+            return result;
+          },
+          delete: (id) => {
+            const key = req.params.id;
+            const post = stubAPI.getPost(id);
+          if(post > -1){
+            posts.splice(post, 1);
+          }
+          else{
+            res.status(400).send({message: 'Unable to find Post ${id}'});
+          }
+        }
       };
     export default stubAPI;

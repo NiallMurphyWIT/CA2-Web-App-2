@@ -31,6 +31,15 @@ router.post('/:id/upvote', (req, res) => {
          return res.status(404).send({message: `Unable to find Post ${id}`});
 });
 
+// downvote a post
+router.post('/:id/downvote', (req, res) => {
+  const id = req.params.id;
+         if (stubAPI.downvote(id)) {
+              return res.status(200).send({message: `Post ${id} Downvoted`});
+         }
+         return res.status(404).send({message: `Unable to find Post ${id}`});
+});
+
 // get a post
 router.get('/:id', (req, res) => {
   const id = req.params.id;
@@ -40,6 +49,20 @@ router.get('/:id', (req, res) => {
              return res.status(200).send(post);
             }
             return res.status(404).send({message: `Unable to find Post ${id}`});
+});
+
+//delete a post
+router.delete('/:id',(req, res) => {
+  const key = req.params.id;
+  const post = stubAPI.getPost(id);
+if(post > -1){
+  posts.splice(post, 1);
+  res.status(200).send({message: 'Deleted post with id: ${id}'});
+}
+else{
+  res.status(400).send({message: 'Unable to find Post ${id}'});
+}
+
 });
 
 
